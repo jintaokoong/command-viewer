@@ -1,0 +1,7 @@
+{
+  "name": "StreamElements Command Viewer",
+  "short_name": "SE CommandViewer",
+  "permissions": [
+    "clipboardWrite"
+  ]
+}
