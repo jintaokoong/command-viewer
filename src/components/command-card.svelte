@@ -66,7 +66,10 @@
       <Icon name='{playingids.includes(command._id) ? "pause-circle" : "play-circle"}' class="fs-2" style="color: white"/>
     </div>
     <p class="title mb-1">{command.name}</p>
-    <p class="description mb-1">{command.description}</p>
+    <div class="d-flex flex-row align-items-center justify-content-between mb-1">
+      <p class="text-smaller description">{command.description}</p>
+      <div class="text-smaller">{command.cost}雞皮</div>
+    </div>
     <div class="clickable code-container rounded p-1" on:click={copy(`!s ${command.identifier}`)}>
       <pre>!s {command.identifier}</pre>
     </div>
@@ -94,8 +97,11 @@
     font-size: 1.12rem;
   }
 
-  .description {
+  .text-smaller {
     font-size: 0.85rem;
+  }
+
+  .description {
     color: #7c7c7c;
   }
 </style>

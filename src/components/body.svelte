@@ -4,6 +4,7 @@
   import { commands } from 'stores/commands'
 
   let state = {
+    isInitialized: false,
     isLoading: false,
     isError: false,
     data: [],
@@ -16,7 +17,7 @@
 </script>
 
 <div class="mt-4">
-  {#if state.isLoading && !state.isError}
+  {#if !state.isInitialized && state.isLoading && !state.isError}
     <div class="d-flex justify-content-center align-items-center">
       <Spinner size="sm" type="grow" /> <p class="ms-2 loading-message">載入中 請稍後</p>
     </div>

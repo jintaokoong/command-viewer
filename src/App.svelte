@@ -9,8 +9,11 @@
   import { commands } from 'stores/commands'
   import transformer from 'utils/transformer'
 
-  onMount(() => {
-    commands.update(v => ({ ...v, isLoading: true }))
+  const query = () => {
+    commands.update(v => ({ ...v,
+      isInitialized: true,
+      isLoading: true
+    }))
     CommandService.fetchCommands().then((data) => {
       commands.update(v => ({
         ...v,
@@ -28,6 +31,13 @@
         isLoading: false,
       }))
     })
+  }
+
+  onMount(() => {
+    query();
+    window.onfocus = () => {
+      query();
+    }
   })
 </script>
 

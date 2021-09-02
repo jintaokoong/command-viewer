@@ -2,6 +2,7 @@ import { writable } from 'svelte/store'
 import { Command } from 'interfaces/entities/command'
 
 export interface State {
+  isInitialized: boolean;
   isLoading: boolean;
   isError: boolean;
   data: Command[];
@@ -9,6 +10,7 @@ export interface State {
 }
 
 export const commands = writable<State>({
+  isInitialized: false,
   isLoading: false,
   isError: false,
   data: [],
