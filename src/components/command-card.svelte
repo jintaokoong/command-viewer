@@ -63,11 +63,7 @@
 <Card>
   <CardBody>
     <div class="d-flex clickable rounded mb-1 justify-content-center align-items-center bg-dark" style="height: 15vh; min-height: 147px" on:click={onPlay(command._id, command.audio.src)}>
-      {#if playingids.includes(command._id)}
-        <Icon name='pause-circle' class="fs-2" style="color: white"/>
-      {:else}
-        <Icon name='play-circle' class="fs-2" style="color: white"/>
-      {/if}
+      <Icon name='{playingids.includes(command._id) ? "pause-circle" : "play-circle"}' class="fs-2" style="color: white"/>
     </div>
     <p class="title mb-1">{command.name}</p>
     <p class="description mb-1">{command.description}</p>
