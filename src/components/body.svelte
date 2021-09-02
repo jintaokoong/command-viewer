@@ -42,10 +42,6 @@
     margin: 0;
   }
 
-  pre {
-    margin: 0;
-  }
-
   .loading-message {
     font-size: 1.25rem;
   }
