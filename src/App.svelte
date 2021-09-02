@@ -11,12 +11,12 @@
 
   const query = () => {
     commands.update(v => ({ ...v,
-      isInitialized: true,
       isLoading: true
     }))
     CommandService.fetchCommands().then((data) => {
       commands.update(v => ({
         ...v,
+        isInitialized: true,
         data: data.filter(c => c.enabled).map(c => transformer.transform(c)),
       }))
     }).catch((error) => {
