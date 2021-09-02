@@ -3,18 +3,18 @@
   import { toast } from '@zerodevx/svelte-toast'
   import { audios } from 'stores/audio'
 
-  export let command;
-  let playing = [];
+  export let command
+  let playing = []
 
   $: playingids = playing.map(p => p.id)
 
   audios.subscribe(value => {
-    playing = value;
+    playing = value
   })
 
   const onPlay = (id: string, src: string) => () => {
-    let audio = new Audio(src);
-    const index = playing.findIndex(a => a.id === id);
+    let audio = new Audio(src)
+    const index = playing.findIndex(a => a.id === id)
     if (index === -1) {
       audio.onended = () => {
         audio.removeAttribute('src')
@@ -23,14 +23,14 @@
         audios.update(a => a.filter(ad => ad.id !== id))
       }
       audio.play().then(() => {
-        audios.update(a => [...a, { id: id, audio: audio }]);
-      });
+        audios.update(a => [...a, { id: id, audio: audio }])
+      })
     } else {
-      const entry = playing[index];
-      entry.audio.pause();
+      const entry = playing[index]
+      entry.audio.pause()
       entry.audio.removeAttribute('src')
       entry.audio.load()
-      entry.audio.remove();
+      entry.audio.remove()
       audios.update(a => a.filter(aud => aud.id !== id))
     }
   }
@@ -62,12 +62,18 @@
 
 <Card>
   <CardBody>
-    <div class="d-flex clickable rounded mb-1 justify-content-center align-items-center bg-dark" style="height: 15vh; min-height: 147px" on:click={onPlay(command._id, command.audio.src)}>
-      <Icon name='{playingids.includes(command._id) ? "pause-circle" : "play-circle"}' class="fs-2" style="color: white"/>
+    <div class="d-flex clickable rounded mb-1 justify-content-center align-items-center bg-dark"
+         style="height: 15vh; min-height: 147px" on:click={onPlay(command._id, command.audio.src)}>
+      <Icon name='{playingids.includes(command._id) ? "pause-circle" : "play-circle"}' class="fs-2"
+            style="color: white"/>
     </div>
     <p class="title mb-1">{command.name}</p>
+    <p class="text-smaller mb-1 description">{command.description}</p>
     <div class="d-flex flex-row align-items-center justify-content-between mb-1">
-      <p class="text-smaller description">{command.description}</p>
+      <div class="d-flex flex-row align-items-center" title="冷卻時間">
+        <Icon name="clock-history" style="font-size: 0.8rem;"/>
+        <span class="ms-2 text-smaller">{command.cooldown.global}秒</span>
+      </div>
       <div class="text-smaller">{command.cost}雞皮</div>
     </div>
     <div class="clickable code-container rounded p-1" on:click={copy(`!s ${command.identifier}`)}>
