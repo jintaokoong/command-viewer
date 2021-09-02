@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@rollup/plugin-alias': ^3.1.5
   '@rollup/plugin-commonjs': ^17.0.0
   '@rollup/plugin-node-resolve': ^11.0.0
   '@rollup/plugin-typescript': ^8.0.0
@@ -26,6 +27,7 @@ dependencies:
   sveltestrap: 5.6.2_svelte@3.42.4
 
 devDependencies:
+  '@rollup/plugin-alias': 3.1.5_rollup@2.56.3
   '@rollup/plugin-commonjs': 17.1.0_rollup@2.56.3
   '@rollup/plugin-node-resolve': 11.2.1_rollup@2.56.3
   '@rollup/plugin-typescript': 8.2.5_fb60d1099d0f1062e1f455c5bc85cce0
@@ -72,6 +74,16 @@ packages:
   /@popperjs/core/2.9.3:
     resolution: {integrity: sha512-xDu17cEfh7Kid/d95kB6tZsLOmSWKCZKtprnhVepjsSaCij+lM3mItSJDuuHDMbCWTh8Ejmebwb+KONcCJ0eXQ==}
     dev: false
+
+  /@rollup/plugin-alias/3.1.5_rollup@2.56.3:
+    resolution: {integrity: sha512-yzUaSvCC/LJPbl9rnzX3HN7vy0tq7EzHoEiQl1ofh4n5r2Rd5bj/+zcJgaGA76xbw95/JjWQyvHg9rOJp2y0oQ==}
+    engines: {node: '>=8.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0
+    dependencies:
+      rollup: 2.56.3
+      slash: 3.0.0
+    dev: true
 
   /@rollup/plugin-commonjs/17.1.0_rollup@2.56.3:
     resolution: {integrity: sha512-PoMdXCw0ZyvjpCMT5aV4nkL0QywxP29sODQsSGeDpr/oI49Qq9tRtAsb/LbYbDzFlOydVEqHmmZWFtXJEAX9ew==}
@@ -703,6 +715,11 @@ packages:
       mime: 2.5.2
       totalist: 1.1.0
     dev: false
+
+  /slash/3.0.0:
+    resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
+    engines: {node: '>=8'}
+    dev: true
 
   /source-map-support/0.5.19:
     resolution: {integrity: sha512-Wonm7zOCIJzBGQdB+thsPar0kYuCIzYvxZwlBa87yi/Mdjv7Tip2cyVbLj5o0cFPN4EVkuTwb3GDDyUx2DGnGw==}

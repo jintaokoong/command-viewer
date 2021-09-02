@@ -3,7 +3,11 @@
   "compilerOptions": {
     "lib": ["es2015", "es2016", "dom", "es2018.promise"],
     "baseUrl": "./src",
+    "paths": {
+      "components": ["./components"],
+    },
     "importsNotUsedAsValues": "preserve",
+    "types": ["svelte"],
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules/*", "__sapper__/*", "public/*"]
