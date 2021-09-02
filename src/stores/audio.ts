@@ -1,3 +1,8 @@
 import { writable } from 'svelte/store'
 
-export const audios = writable<string[]>([]);
+export interface AudioDto {
+  id: string;
+  audio: HTMLAudioElement;
+}
+
+export const audios = writable<AudioDto[]>([]);

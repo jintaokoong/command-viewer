@@ -1,6 +1,6 @@
 {
-  "name": "StreamElements Command Viewer",
-  "short_name": "SE CommandViewer",
+  "name": "StreamElements 指令查看器",
+  "short_name": "SE 指令查看器",
   "permissions": [
     "clipboardWrite"
   ]

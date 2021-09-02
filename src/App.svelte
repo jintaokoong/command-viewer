@@ -14,6 +14,7 @@
     error: '',
   }
   let playing = [];
+  $: playingids = playing.map(p => p.id)
 
   audios.subscribe(value => {
     playing = value;
@@ -45,23 +46,27 @@
   })
 
   const onPlay = (id: string, src: string) => () => {
-    console.log('audio src', src);
     let audio = new Audio(src);
-    audio.onended = () => {
-      audios.update(a => a.filter(aid => aid !== id))
+    const index = playing.findIndex(a => a.id === id);
+    if (index === -1) {
+      audio.onended = () => {
+        audios.update(a => a.filter(ad => ad.id !== id))
+      }
+      audio.play().then(() => {
+        audios.update(a => [...a, { id: id, audio: audio }]);
+      });
+    } else {
+      const entry = playing[index];
+      entry.audio.pause();
+      audios.update(a => a.filter(aud => aud.id !== id))
     }
-    audio.play().then(() => {
-      audios.update(a => [...a, id]);
-    });
   }
 
   const copy = (source: string) => () => {
     navigator.permissions.query({ name: 'clipboard-write' }).then((result) => {
       if (result.state == 'granted' || result.state == 'prompt') {
-        console.log('granted')
         navigator.clipboard.writeText(source).then(() => {
-          console.log('copied to clipboard')
-          toast.push('copied to clipboard')
+          toast.push('複製成功')
         })
       }
     }).catch(() => {
@@ -74,9 +79,8 @@
       textArea.focus()
       textArea.select()
       const successful = document.execCommand('copy')
-      console.log(successful)
       if (successful) {
-        toast.push('copied to clipboard')
+        toast.push('複製成功')
       }
       document.body.removeChild(textArea)
     })
@@ -86,7 +90,7 @@
 <main>
   <Container>
     <Navbar color="light" light>
-      <NavbarBrand class="me-auto">Command Viewer</NavbarBrand>
+      <NavbarBrand class="me-auto">指令查看器</NavbarBrand>
     </Navbar>
     <Row class="mt-4" cols={{ lg: 4, md: 2, sm: 1, xs: 1 }}>
       {#each state.data as command}
@@ -94,7 +98,7 @@
           <Card>
             <CardBody>
               <div class="d-flex clickable rounded mb-1 justify-content-center align-items-center bg-dark" style="height: 15vh; min-height: 147px" on:click={onPlay(command._id, command.audio.src)}>
-                {#if playing.includes(command._id)}
+                {#if playingids.includes(command._id)}
                   <Icon name='pause-circle' class="fs-2" style="color: white"/>
                 {:else}
                   <Icon name='play-circle' class="fs-2" style="color: white"/>
