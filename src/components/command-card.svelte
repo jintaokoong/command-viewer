@@ -17,16 +17,20 @@
     const index = playing.findIndex(a => a.id === id);
     if (index === -1) {
       audio.onended = () => {
-        console.log('ended')
+        audio.removeAttribute('src')
+        audio.load()
+        audio.remove()
         audios.update(a => a.filter(ad => ad.id !== id))
       }
       audio.play().then(() => {
-        console.log('playing')
         audios.update(a => [...a, { id: id, audio: audio }]);
       });
     } else {
       const entry = playing[index];
       entry.audio.pause();
+      entry.audio.removeAttribute('src')
+      entry.audio.load()
+      entry.audio.remove();
       audios.update(a => a.filter(aud => aud.id !== id))
     }
   }
