@@ -62,7 +62,7 @@
 
 <Card>
   <CardBody>
-    <div class="d-flex clickable rounded mb-1 justify-content-center align-items-center bg-dark"
+    <div class="d-flex clickable rounded mb-1 justify-content-center align-items-center bg-custom"
          style="height: 15vh; min-height: 147px" on:click={onPlay(command._id, command.audio.src)}>
       <Icon name='{playingids.includes(command._id) ? "pause-circle" : "play-circle"}' class="fs-2"
             style="color: white"/>
@@ -89,6 +89,10 @@
 
   pre {
     margin: 0;
+  }
+
+  .bg-custom {
+    background-color: #ACB9FD;
   }
 
   .clickable {

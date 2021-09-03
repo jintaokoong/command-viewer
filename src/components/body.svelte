@@ -24,7 +24,7 @@
   {:else if state.isError}
     <Alert color="danger">
       <h5 class="alert-heading">歐不 看起來像是出現了錯誤</h5>
-      HTTP要求有可能被StreamElements 請通知亨利 謝謝
+      HTTP要求有可能被StreamElements封鎖了 有任何問題請私訊亨利 (圖奇ID: daydreamer76)
     </Alert>
   {:else}
     <Row cols={{ lg: 4, md: 2, sm: 1, xs: 1 }}>
