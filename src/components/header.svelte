@@ -1,10 +1,12 @@
 <script lang="ts">
+import { _ } from 'svelte-i18n';
+
   import { Navbar, NavbarBrand } from 'sveltestrap'
 </script>
 
 <div>
   <Navbar color="light" light>
-    <NavbarBrand class="me-auto">指令查看器</NavbarBrand>
+    <NavbarBrand class="me-auto">{$_('brand')}</NavbarBrand>
   </Navbar>
 </div>
 
