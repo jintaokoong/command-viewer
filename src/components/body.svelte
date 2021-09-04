@@ -2,6 +2,7 @@
   import { Alert, Col, Row, Spinner } from 'sveltestrap'
   import CommandCard from 'components/command-card.svelte'
   import { commands } from 'stores/commands'
+  import { _ } from 'svelte-i18n';
 
   let state = {
     isInitialized: false,
@@ -19,12 +20,12 @@
 <div class="mt-4">
   {#if !state.isInitialized && state.isLoading && !state.isError}
     <div class="d-flex justify-content-center align-items-center">
-      <Spinner size="sm" type="grow" /> <p class="ms-2 loading-message">載入中 請稍後</p>
+      <Spinner size="sm" type="grow" /> <p class="ms-2 loading-message">{$_('loading_message')}</p>
     </div>
   {:else if state.isError}
     <Alert color="danger">
-      <h5 class="alert-heading">歐不 看起來像是出現了錯誤</h5>
-      HTTP要求有可能被StreamElements封鎖了 有任何問題請私訊亨利 (圖奇ID: daydreamer76)
+      <h5 class="alert-heading">{$_('error_title')}</h5>
+      {$_('error_prompt_message')}
     </Alert>
   {:else}
     <Row cols={{ lg: 4, md: 2, sm: 1, xs: 1 }}>

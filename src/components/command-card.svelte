@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { _ }from 'svelte-i18n'
   import { Card, CardBody, Icon } from 'sveltestrap'
   import { toast } from '@zerodevx/svelte-toast'
   import { audios } from 'stores/audio'
@@ -39,7 +40,7 @@
     navigator.permissions.query({ name: 'clipboard-write' }).then((result) => {
       if (result.state == 'granted' || result.state == 'prompt') {
         navigator.clipboard.writeText(source).then(() => {
-          toast.push('複製成功')
+          toast.push($_('copy_success_message'))
         })
       }
     }).catch(() => {
@@ -53,7 +54,7 @@
       textArea.select()
       const successful = document.execCommand('copy')
       if (successful) {
-        toast.push('複製成功')
+        toast.push($_('copy_success_message'))
       }
       document.body.removeChild(textArea)
     })
@@ -70,11 +71,11 @@
     <p class="title mb-1">{command.name}</p>
     <p class="text-smaller mb-1 description">{command.description}</p>
     <div class="d-flex flex-row align-items-center justify-content-between mb-1">
-      <div class="d-flex flex-row align-items-center" title="冷卻時間">
+      <div class="d-flex flex-row align-items-center" title="{$_('cooldown_hint')}">
         <Icon name="clock-history" style="font-size: 0.8rem;"/>
-        <span class="ms-2 text-smaller">{command.cooldown.global}秒</span>
+        <span class="ms-2 text-smaller">{command.cooldown.global}{$_('duration_text')}</span>
       </div>
-      <div class="text-smaller">{command.cost}雞皮</div>
+      <div class="text-smaller">{command.cost}{$_('currency')}</div>
     </div>
     <div class="clickable code-container rounded p-1" on:click={copy(`!s ${command.identifier}`)}>
       <pre>!s {command.identifier}</pre>
