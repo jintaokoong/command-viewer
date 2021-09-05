@@ -1,11 +1,16 @@
-<footer class="mt-auto p-2 bg-light text-center">
-    <span class="version">
-      v1.1.3
+<footer class="mt-auto p-2 bg text-center">
+    <span class="version text-light">
+      v1.1.4
     </span>
 </footer>
 
 <style>
+  .bg {
+    background-color: #94C6D8;
+  }
+
   .version {
     font-size: 0.9rem;
+    font-weight: bold;
   }
 </style>

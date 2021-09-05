@@ -1,6 +1,6 @@
 <script lang="ts">
   import { _ }from 'svelte-i18n'
-  import { Card, CardBody, Icon } from 'sveltestrap'
+  import { CardBody, Icon } from 'sveltestrap'
   import { toast } from '@zerodevx/svelte-toast'
   import { audios } from 'stores/audio'
 
@@ -61,9 +61,9 @@
   }
 </script>
 
-<Card>
+<div class="card bg-card">
   <CardBody>
-    <div class="d-flex clickable rounded mb-1 justify-content-center align-items-center bg-custom"
+    <div class="d-flex clickable rounded mb-1 justify-content-center align-items-center bg-media"
          style="height: 15vh; min-height: 147px" on:click={onPlay(command._id, command.audio.src)}>
       <Icon name='{playingids.includes(command._id) ? "pause-circle" : "play-circle"}' class="fs-2"
             style="color: white"/>
@@ -81,7 +81,7 @@
       <pre>!s {command.identifier}</pre>
     </div>
   </CardBody>
-</Card>
+</div>
 
 <style>
   p {
@@ -92,8 +92,12 @@
     margin: 0;
   }
 
-  .bg-custom {
-    background-color: #ACB9FD;
+  .bg-card {
+    background-color: #F1FAFA !important;
+  }
+
+  .bg-media {
+    background-color: #608ABB;
   }
 
   .clickable {
@@ -101,7 +105,8 @@
   }
 
   .code-container {
-    background: beige;
+    background: #608ABB;
+    color: white;
   }
 
   .title {
@@ -113,6 +118,6 @@
   }
 
   .description {
-    color: #7c7c7c;
+    color: #646464;
   }
 </style>
