@@ -74,7 +74,7 @@
       <div class="d-flex flex-row">
         <div class="d-flex flex-row align-items-center">
           <Icon name="clock-history" style="font-size: 0.8rem;"/>
-          <span class="ms-1 text-smaller" title="{$_('cooldown_hint_global')}">{command.cooldown.global}{$_('duration_text')}</span>
+          <span class="ms-2 text-smaller" title="{$_('cooldown_hint_global')}">{command.cooldown.global}{$_('duration_text')}</span>
           <span class="ms-1 text-smaller" title="{$_('cooldown_hint_user')}">{command.cooldown.user}{$_('duration_text')}</span>
         </div>
       </div>
