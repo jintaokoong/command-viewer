@@ -71,9 +71,12 @@
     <p class="title mb-1">{command.name}</p>
     <p class="text-smaller mb-1 description">{command.description}</p>
     <div class="d-flex flex-row align-items-center justify-content-between mb-1">
-      <div class="d-flex flex-row align-items-center" title="{$_('cooldown_hint')}">
-        <Icon name="clock-history" style="font-size: 0.8rem;"/>
-        <span class="ms-2 text-smaller">{command.cooldown.global}{$_('duration_text')}</span>
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-row align-items-center">
+          <Icon name="clock-history" style="font-size: 0.8rem;"/>
+          <span class="ms-1 text-smaller" title="{$_('cooldown_hint_global')}">{command.cooldown.global}{$_('duration_text')}</span>
+          <span class="ms-1 text-smaller" title="{$_('cooldown_hint_user')}">{command.cooldown.user}{$_('duration_text')}</span>
+        </div>
       </div>
       <div class="text-smaller">{command.cost}{$_('currency')}</div>
     </div>

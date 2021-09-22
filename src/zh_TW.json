@@ -4,7 +4,8 @@
     "error_prompt_message": "HTTP要求有可能被StreamElements封鎖了 有任何問題請私訊亨利 (圖奇ID: daydreamer76)",
     "loading_message": "載入中 請稍後",
     "copy_success_message": "複製成功！",
-    "cooldown_hint": "冷卻時間",
+    "cooldown_hint_global": "冷卻時間 (整體)",
+    "cooldown_hint_user": "冷卻時間 (個人)",
     "duration_text": "秒",
     "currency": "雞皮"
 }
