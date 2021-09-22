@@ -1,6 +1,6 @@
 <footer class="mt-auto p-2 bg text-center">
     <span class="version text-light">
-      v1.1.4
+      v1.1.5
     </span>
 </footer>
 
